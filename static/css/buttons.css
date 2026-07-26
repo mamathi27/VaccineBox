@@ -1,0 +1,78 @@
+.buttons{
+
+    margin-top:40px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:15px 30px;
+
+    border-radius:12px;
+
+    color:white;
+
+    background:var(--primary);
+
+    margin-right:15px;
+
+    transition:.3s;
+
+    font-weight:bold;
+
+}
+
+.secondary{
+
+    background:var(--success);
+
+}
+
+.danger{
+
+    background:var(--danger);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.2);
+
+}
+.edit-btn{
+
+background:#1565C0;
+
+color:white;
+
+padding:8px 14px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+margin-right:5px;
+
+}
+
+.delete-btn{
+
+background:#D32F2F;
+
+color:white;
+
+padding:8px 14px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}

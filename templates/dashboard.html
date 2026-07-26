@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VaccineBox Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        💉 <span>VaccineBox</span>
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/inventory">Inventory</a>
+
+        <a href="/readings">Readings</a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+<h1 class="page-title">
+📊 Vaccine Monitoring Dashboard
+</h1>
+
+<!-- ===========================
+     Temperature Statistics
+============================ -->
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h2>📦</h2>
+
+<h1>{{ total }}</h1>
+
+<p>Total Readings</p>
+
+</div>
+
+<div class="stat-card safe">
+
+<h2>🟢</h2>
+
+<h1>{{ safe }}</h1>
+
+<p>Safe Readings</p>
+
+</div>
+
+<div class="stat-card danger">
+
+<h2>🔴</h2>
+
+<h1>{{ breach }}</h1>
+
+<p>Breaches</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>🌡</h2>
+
+<h1>{{ avg }} °C</h1>
+
+<p>Average Temperature</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     Inventory Statistics
+============================ -->
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h2>💉</h2>
+
+<h1>{{ vaccine_count }}</h1>
+
+<p>Total Vaccines</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>📦</h2>
+
+<h1>{{ total_stock }}</h1>
+
+<p>Total Stock</p>
+
+</div>
+
+<div class="stat-card warning">
+
+<h2>⚠</h2>
+
+<h1>{{ expiring }}</h1>
+
+<p>Expiring Soon</p>
+
+</div>
+
+<div class="stat-card danger">
+
+<h2>❌</h2>
+
+<h1>{{ out_stock }}</h1>
+
+<p>Out Of Stock</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     Temperature Chart
+============================ -->
+
+<section class="chart-section">
+
+<h2>
+
+📈 Temperature Trend
+
+</h2>
+
+<canvas id="tempChart"></canvas>
+
+</section>
+
+<!-- ===========================
+     Inventory Chart
+============================ -->
+
+<section class="chart-section">
+
+<h2>
+
+📊 Vaccine Stock Distribution
+
+</h2>
+
+<canvas id="stockChart"></canvas>
+
+</section>
+
+<!-- ===========================
+     Recent Readings Table
+============================ -->
+
+<section class="table-section">
+
+<h2>
+
+📋 Recent Temperature Readings
+
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Box</th>
+
+<th>Temperature</th>
+
+<th>Status</th>
+
+<th>Location</th>
+
+<th>Recorded Time</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in recent %}
+
+<tr>
+
+<td>{{ row.box_id }}</td>
+
+<td>{{ row.temperature_c }} °C</td>
+
+<td>
+
+{% if row.breach_flag=="YES" %}
+
+<span class="badge red">
+
+🔴 Breach
+
+</span>
+
+{% else %}
+
+<span class="badge green">
+
+🟢 Safe
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>{{ row.location }}</td>
+
+<td>{{ row.recorded_at }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</section>
+
+</div>
+
+<!-- ===========================
+     Temperature Chart
+============================ -->
+
+<script>
+
+const tempCtx = document.getElementById("tempChart");
+
+new Chart(tempCtx, {
+
+type: "line",
+
+data: {
+
+labels: {{ labels|default([])|tojson }},
+
+datasets: [
+
+{
+
+label: "Temperature (°C)",
+
+data: {{ temperatures|default([])|tojson }},
+
+borderColor: "#1565C0",
+
+backgroundColor: "rgba(21,101,192,0.15)",
+
+fill: true,
+
+tension: 0.4
+
+}
+
+]
+
+},
+
+options: {
+
+responsive: true,
+
+plugins: {
+
+legend: {
+
+display: true
+
+}
+
+},
+
+scales: {
+
+y: {
+
+beginAtZero: true
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+<!-- ===========================
+     Stock Chart
+============================ -->
+
+<script>
+
+const stockCtx = document.getElementById("stockChart");
+
+new Chart(stockCtx, {
+
+type: "bar",
+
+data: {
+
+labels: {{ stock_labels|tojson }},
+
+datasets: [
+
+{
+
+label: "Available Stock",
+
+data: {{ stock_values|tojson }},
+
+backgroundColor: [
+
+"#1565C0",
+
+"#2E7D32",
+
+"#F9A825",
+
+"#8E24AA",
+
+"#D32F2F",
+
+"#00897B"
+
+]
+
+}
+
+]
+
+},
+
+options: {
+
+responsive: true,
+
+plugins: {
+
+legend: {
+
+display: false
+
+}
+
+},
+
+scales: {
+
+y: {
+
+beginAtZero: true
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

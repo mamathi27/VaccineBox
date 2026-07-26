@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Add Vaccine</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+<h1>Add Vaccine</h1>
+
+<form method="POST">
+
+<input
+type="text"
+name="vaccine_name"
+placeholder="Vaccine Name"
+required>
+
+<input
+type="text"
+name="manufacturer"
+placeholder="Manufacturer"
+required>
+
+<input
+type="text"
+name="batch_number"
+placeholder="Batch Number"
+required>
+
+<input
+type="number"
+name="stock"
+placeholder="Stock"
+required>
+
+<input
+type="date"
+name="expiry_date"
+required>
+
+<button type="submit">
+
+Save Vaccine
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

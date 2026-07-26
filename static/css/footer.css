@@ -1,0 +1,19 @@
+footer{
+
+    background:var(--primary);
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    margin-top:70px;
+
+}
+
+footer p{
+
+    margin:8px;
+
+}

@@ -1,0 +1,11 @@
+reading_id,box_id,temperature_c,breach_flag,location,recorded_at
+1,BOX001,4.5,NO,Block Store,2026-07-26 09:00
+2,BOX001,5.1,NO,Highway,2026-07-26 09:10
+3,BOX001,6.2,NO,Village A,2026-07-26 09:20
+4,BOX001,8.5,YES,Village A,2026-07-26 09:30
+5,BOX002,3.8,NO,Block Store,2026-07-26 09:00
+6,BOX002,2.1,NO,Highway,2026-07-26 09:10
+7,BOX002,1.5,YES,Village B,2026-07-26 09:20
+8,BOX003,5.4,NO,Village C,2026-07-26 09:30
+9,BOX003,,UNKNOWN,Village C,2026-07-26 09:40
+10,BOX004,45.0,YES,Village D,2026-07-26 09:50

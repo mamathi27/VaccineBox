@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Readings</title>
+</head>
+
+<body>
+
+<h1>Temperature Readings</h1>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Box ID"
+        value="{{ search }}">
+
+    <button type="submit">Search</button>
+
+</form>
+
+<br>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>ID</th>
+    <th>Box ID</th>
+    <th>Temperature</th>
+    <th>Status</th>
+    <th>Location</th>
+    <th>Recorded At</th>
+</tr>
+
+{% for row in readings %}
+
+<tr>
+
+<td>{{ row.reading_id }}</td>
+
+<td>{{ row.box_id }}</td>
+
+<td>{{ row.temperature_c }} °C</td>
+
+<td>
+{% if row.breach_flag == "YES" %}
+🔴 Breach
+{% else %}
+🟢 Safe
+{% endif %}
+</td>
+
+<td>{{ row.location }}</td>
+
+<td>{{ row.recorded_at }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">
+    <button>Home</button>
+</a>
+
+<a href="/add">
+    <button>Add Reading</button>
+</a>
+
+</body>
+</html>

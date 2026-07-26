@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vaccine Inventory</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/inventory.css') }}">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+
+        💉 <span>VaccineBox</span>
+
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/readings">Readings</a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="title-row">
+
+        <h1>📦 Vaccine Inventory</h1>
+
+        <a href="/add-vaccine" class="add-btn">
+
+            + Add Vaccine
+
+        </a>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search vaccine..."
+            onkeyup="searchTable()">
+
+    </div>
+
+    <table id="inventoryTable">
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Vaccine</th>
+            <th>Manufacturer</th>
+            <th>Batch</th>
+            <th>Stock</th>
+            <th>Expiry</th>
+            <th>Status</th>
+            <th>Action</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for v in vaccines %}
+
+        <tr>
+
+            <td>{{ v.vaccine_id }}</td>
+
+            <td>{{ v.vaccine_name }}</td>
+
+            <td>{{ v.manufacturer }}</td>
+
+            <td>{{ v.batch_number }}</td>
+
+            <td>{{ v.stock }}</td>
+
+            <td>{{ v.expiry_date }}</td>
+
+            <td>
+
+                {% if v.status=="Expired" %}
+
+                <span class="badge red">
+
+                    Expired
+
+                </span>
+
+                {% elif v.status=="Expiring Soon" %}
+
+                <span class="badge yellow">
+
+                    {{ v.days_left }} Days
+
+                </span>
+
+                {% else %}
+
+                <span class="badge green">
+
+                    Safe
+
+                </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                <a href="/edit-vaccine/{{v.vaccine_id}}" class="edit">
+
+                    ✏
+
+                </a>
+
+                <a href="/delete-vaccine/{{v.vaccine_id}}"
+                   class="delete"
+                   onclick="return confirm('Delete vaccine?')">
+
+                    🗑
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
+
+</body>
+
+</html>

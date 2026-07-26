@@ -1,0 +1,80 @@
+@import url("navbar.css");
+@import url("hero.css");
+@import url("cards.css");
+@import url("buttons.css");
+@import url("footer.css");
+@import url("responsive.css");
+
+/* ==========================
+   GLOBAL VARIABLES
+========================== */
+
+:root{
+
+    --primary:#1565C0;
+    --primary-dark:#0D47A1;
+
+    --success:#2E7D32;
+    --danger:#D32F2F;
+
+    --background:#F4F8FC;
+
+    --card:#FFFFFF;
+
+    --text:#263238;
+
+    --shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    font-family:"Segoe UI",sans-serif;
+
+}
+
+body{
+
+    background:linear-gradient(
+        135deg,
+        #EEF5FF,
+        #F8FBFF,
+        #FFFFFF
+    );
+
+    color:var(--text);
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+.safe{
+
+    color:#2E7D32;
+
+    font-weight:bold;
+
+}
+
+.warning{
+
+    color:#F9A825;
+
+    font-weight:bold;
+
+}
+
+.expired{
+
+    color:#D32F2F;
+
+    font-weight:bold;
+
+}

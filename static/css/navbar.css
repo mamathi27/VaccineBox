@@ -1,0 +1,61 @@
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 8%;
+
+    background:var(--primary);
+
+    color:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.18);
+
+}
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+}
+
+.logo span{
+
+    margin-left:10px;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+nav a{
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#FFD54F;
+
+}
