@@ -168,6 +168,23 @@ VaccineBox/
 │
 └── venv/
 ```
+# 📸 Screenshots
+
+## 🏠 Home Page
+
+<img width="1917" height="827" alt="Screenshot 2026-07-27 141930" src="https://github.com/user-attachments/assets/c99b259a-787f-4c74-a30c-438159159b74" />
+
+---
+
+## 📊 Dashboard
+
+<img width="1208" height="2940" alt="127 0 0 1_5000_dashboard" src="https://github.com/user-attachments/assets/ee20b470-35c2-49eb-9e63-cd2862ccc5cd" />
+---
+
+
+
+## 🌡 Temperature Readings
+<img width="1043" height="722" alt="Screenshot 2026-07-27 142136" src="https://github.com/user-attachments/assets/e096adb4-c843-4ed3-be6c-a87c650a6f33" />
 
 ---
 
