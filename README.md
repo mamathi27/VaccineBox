@@ -194,6 +194,18 @@ The demonstration video is available ..
 
 https://github.com/user-attachments/assets/4e2a739f-0b2e-41cf-8812-7a1b231608ad
 
+# 🆕 Level 2 Changes
+
+As part of the SIH 2026 Level 2 on-spot assessment, the following enhancements were implemented:
+
+## ✅ Change 1 – Updated Temperature Threshold
+
+The safe temperature range was changed from **2°C–8°C** to **2°C–6°C**.
+
+Before:
+<img width="1043" height="722" alt="Screenshot 2026-07-27 142136" src="https://github.com/user-attachments/assets/9f1b19cf-ef8d-4889-a0bd-f82abb4885c5" />
+After:
+<img width="886" height="888" alt="Screenshot 2026-07-27 144523" src="https://github.com/user-attachments/assets/ef5ba8b1-060e-4de9-9da6-f1657504c75c" />
 
 
 
