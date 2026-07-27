@@ -11,6 +11,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
+
 create_table()
 create_vaccine_table()
 
@@ -27,10 +28,15 @@ def add_reading():
 
         box_id = request.form["box_id"]
         temperature = float(request.form["temperature"])
+        if temperature < -20 or temperature > 60:
+            return "Invalid temperature! Reading rejected."
         location = request.form["location"]
 
         # Safe temperature range: 2°C to 8°C
-        if 2 <= temperature <= 8:
+        SAFE_MIN = 2
+        SAFE_MAX = 6
+        
+        if SAFE_MIN <= temperature <= SAFE_MAX:
             breach_flag = "NO"
         else:
             breach_flag = "YES"
@@ -174,11 +180,12 @@ def simulate():
     box_id = "BOX001"
 
     temperature = round(random.uniform(0, 10), 1)
-
-    if 2 <= temperature <= 8:
-        breach = "NO"
+    SAFE_MIN = 2
+    SAFE_MAX = 6
+    if SAFE_MIN <= temperature <= SAFE_MAX:
+        breach_flag = "NO"
     else:
-        breach = "YES"
+        breach_flag = "YES"
 
     location = random.choice([
         "District Store",
@@ -198,7 +205,7 @@ def simulate():
     """, (
         box_id,
         temperature,
-        breach,
+        breach_flag,
         location,
         recorded_at
     ))
