@@ -207,6 +207,11 @@ Before:
 After:
 <img width="886" height="888" alt="Screenshot 2026-07-27 144523" src="https://github.com/user-attachments/assets/ef5ba8b1-060e-4de9-9da6-f1657504c75c" />
 
+Demo video:
+
+
+https://github.com/user-attachments/assets/ae2ccf86-a224-43b7-8b80-9f94bbac3658
+
 
 
 
